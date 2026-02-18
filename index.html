@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Capibara - Il Roditore Gigante</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            overflow: hidden;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+        
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        
+        header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+        
+        main {
+            padding: 40px 20px;
+        }
+        
+        section {
+            margin-bottom: 40px;
+        }
+        
+        h2 {
+            color: #2ecc71;
+            border-bottom: 3px solid #2ecc71;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+        }
+        
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .info-card {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #2ecc71;
+        }
+        
+        .info-card h3 {
+            color: #2ecc71;
+            margin-bottom: 10px;
+        }
+        
+        .info-card p {
+            font-size: 0.95em;
+            color: #555;
+        }
+        
+        ul {
+            margin-left: 20px;
+            margin-top: 15px;
+        }
+        
+        li {
+            margin: 8px 0;
+            line-height: 1.8;
+        }
+        
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .gallery-item {
+            background: #f0f0f0;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            color: #666;
+            font-style: italic;
+        }
+        
+        footer {
+            background: #f8f9fa;
+            padding: 20px;
+            text-align: center;
+            border-top: 1px solid #ddd;
+            color: #666;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🐫 Capibara</h1>
+            <p>Il più grande roditore del mondo</p>
+        </header>
+        
+        <main>
+            <section>
+                <h2>Cos'è il Capibara?</h2>
+                <p>Il capibara (Hydrochoerus hydrochaeris) è il roditore più grande attualmente vivente sulla Terra. È un mammifero semi-acquatico nativo del Sud America, noto per il suo aspetto tranquillo e la sua natura socievole. I capibara sono spesso considerati tra gli animali più amichevoli e pacifici del regno animale.</p>
+            </section>
+            
+            <section>
+                <h2>Caratteristiche Fisiche</h2>
+                <div class="info-grid">
+                    <div class="info-card">
+                        <h3>Dimensioni</h3>
+                        <p>Lunghezza: 100-130 cm<br>Peso: 35-65 kg<br>Altezza: 50-60 cm</p>
+                    </div>
+                    <div class="info-card">
+                        <h3>Corpo</h3>
+                        <p>Corpo robusto e compatto con zampe corte e piedi palmati, perfetti per nuotare</p>
+                    </div>
+                    <div class="info-card">
+                        <h3>Denti</h3>
+                        <p>Denti a crescita continua come tutti i roditori, specializzati per rodere vegetal</p>
+                    </div>
+                </div>
+            </section>
+            
+            <section>
+                <h2>Habitat e Distribuzione</h2>
+                <p>I capibara si trovano principalmente in:</p>
+                <ul>
+                    <li><strong>Bacino dell'Amazzonia</strong> - la loro zona preferita</li>
+                    <li><strong>Venezuela</strong> - in grande quantità</li>
+                    <li><strong>Colombia</strong> - nelle zone paludose</li>
+                    <li><strong>Brasile</strong> - soprattutto nel Pantanal</li>
+                    <li><strong>Paraguay e Argentina</strong> - nelle zone umide</li>
+                </ul>
+                <p>Preferiscono vivere vicino a fonti d'acqua come fiumi, laghi, paludi e zone umide in generale.</p>
+            </section>
+            
+            <section>
+                <h2>Comportamento Sociale</h2>
+                <p>I capibara sono animali straordinariamente socievoli:</p>
+                <ul>
+                    <li>Vivono in gruppi che possono raggiungere anche 100 individui</li>
+                    <li>Sono animali crepuscolari, più attivi al tramonto e all'alba</li>
+                    <li>Trascorrono molte ore in acqua per rinfrescarsi e fuggire dai predatori</li>
+                    <li>Comunicano attraverso vari suoni e ghiandole odoranti</li>
+                    <li>Sono noti per la loro natura calma e pacifica</li>
+                </ul>
+            </section>
+            
+            <section>
+                <h2>Dieta</h2>
+                <p>I capibara sono erbivori rigorosi:</p>
+                <ul>
+                    <li>Si nutrono principalmente di erbe acquatiche e di terra</li>
+                    <li>Mangiano circa 3,5 kg di erba al giorno</li>
+                    <li>Hanno uno stomaco a quattro camere specializzato nella digestione vegetale</li>
+                    <li>A volte praticano la coprofagia per assimilare meglio i nutrienti</li>
+                </ul>
+            </section>
+            
+            <section>
+                <h2>Perché i Capibara sono Speciali?</h2>
+                <div class="info-grid">
+                    <div class="info-card">
+                        <h3>🏊 Nuotatori Eccellenti</h3>
+                        <p>Hanno zampe palmate e possono trattenere il respiro fino a 5 minuti</p>
+                    </div>
+                    <div class="info-card">
+                        <h3>😊 Natura Calma</h3>
+                        <p>Sono estremamente pacifici e tolleranti verso altri animali</p>
+                    </div>
+                    <div class="info-card">
+                        <h3>🌍 Equilibrio Ecologico</h3>
+                        <p>Giocano un ruolo importante nell'ecosistema sudamericano</p>
+                    </div>
+                    <div class="info-card">
+                        <h3>👥 Altamente Sociali</h3>
+                        <p>Vivono in gruppi coesi e comunicano costantemente</p>
+                    </div>
+                </div>
+            </section>
+            
+            <section>
+                <h2>Curiosità Affascinanti</h2>
+                <ul>
+                    <li>Il nome "capibara" deriva dalla lingua Tupi e significa "signore delle erbe"</li>
+                    <li>Sono i secondi animali più grandi tra i roditori mai esistiti (dopo il Josephoartigasia monesi estinto)</li>
+                    <li>Possono raggiungere una velocità di 56 km/h in acqua</li>
+                    <li>La loro pelliccia è idrofoba e si asciuga rapidamente</li>
+                    <li>Hanno occhi, orecchi e narici posizionati in alto sul cranio per stare semi-sommersi</li>
+                    <li>Nel 2023, sono diventati virali su internet come animali "chill" e rilassati</li>
+                </ul>
+            </section>
+            
+            <section>
+                <h2>Conservazione</h2>
+                <p>Attualmente il capibara non è una specie in pericolo. La loro popolazione è stabile e in alcuni luoghi abbondante. Tuttavia, affrontano minacce quali:</p>
+                <ul>
+                    <li>Perdita di habitat dovuta alla deforestazione</li>
+                    <li>Caccia non regolamentata in alcune regioni</li>
+                    <li>Inquinamento delle fonti d'acqua</li>
+                    <li>Cambiamenti climatici che alterano i loro ecosistemi</li>
+                </ul>
+            </section>
+        </main>
+        
+        <footer>
+            <p> © 2026 Capibara Info - Alla scoperta del roditore gigante</p>
+            <p>Creato con amore per gli amanti dei capibara 🐫</p>
+        </footer>
+    </div>
+</body>
+</html>
