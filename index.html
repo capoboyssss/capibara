@@ -73,7 +73,7 @@
         }
         
         header {
-            background: url('https://images.unsplash.com/photo-1557127113-5807469a7447?auto=format&fit=crop&q=80&w=1000') center/cover;
+            background: url('https://upload.wikimedia.org/wikipedia/commons/4/45/Capybara_in_Costa_Rica_%28Hydrochoerus_hydrochaeris%29.jpg') center/cover;
             color: white;
             padding: 80px 20px;
             text-align: center;
@@ -245,11 +245,40 @@
     </style>
 </head>
 <body>
-    <!-- Suoni Interattivi -->
-    <audio id="clickSound" src="https://www.soundjay.com/buttons/sounds/button-37a.mp3"></audio>
-    <audio id="successSound" src="https://www.soundjay.com/buttons/sounds/button-07.mp3"></audio>
-    <audio id="magicSound" src="https://www.soundjay.com/buttons/sounds/magic-wand-spell.mp3"></audio>
-    <audio id="cheerSound" src="https://www.soundjay.com/buttons/sounds/chime-bell.mp3"></audio>
+    <!-- Suoni Interattivi - Generati tramite Web Audio API -->
+    <script>
+        // Creiamo i suoni sintetizzati per garantire compatibilità
+        const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+        window.soundCache = {};
+        
+        function generateBeep(frequency, duration, type = 'sine') {
+            const osc = audioContext.createOscillator();
+            const gain = audioContext.createGain();
+            osc.connect(gain);
+            gain.connect(audioContext.destination);
+            osc.frequency.value = frequency;
+            osc.type = type;
+            gain.gain.setValueAtTime(0.12, audioContext.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + duration);
+            osc.start(audioContext.currentTime);
+            osc.stop(audioContext.currentTime + duration);
+        }
+
+        // Funzione per abilitare i suoni via interazione utente
+        function enableSounds() {
+            if (audioContext.state === 'suspended') {
+                audioContext.resume().then(() => {
+                    playSound('cheerSound');
+                    const btn = document.getElementById('enableSoundsBtn');
+                    if (btn) btn.style.display = 'none';
+                }).catch(err => console.log('Impossibile abilitare audio:', err));
+            } else {
+                playSound('cheerSound');
+                const btn = document.getElementById('enableSoundsBtn');
+                if (btn) btn.style.display = 'none';
+            }
+        }
+    </script>
 
     <div class="container">
         <header>
@@ -260,10 +289,13 @@
         </header>
         
         <main>
+            <div style="text-align:center; margin: 15px 0;">
+                <button id="enableSoundsBtn" class="interactive-button" onclick="enableSounds()">🔊 Abilita Suoni</button>
+            </div>
             <!-- Sezione Introduzione -->
             <section>
                 <h2>Il Roditore più "Chill" del mondo</h2>
-                <img src="https://images.unsplash.com/photo-1634731383321-7171542f2070?auto=format&fit=crop&q=80&w=800" alt="Capibara rilassato" class="capy-img" onclick="playSound('magicSound')">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Capybara_in_water.jpg/1200px-Capybara_in_water.jpg" alt="Capibara rilassato" class="capy-img" onclick="playSound('magicSound')">
                 <p style="font-size: 1.1em;">Il capibara è un mammifero semi-acquatico che ha conquistato internet grazie alla sua capacità di fare amicizia con qualsiasi specie, dai coccodrilli agli uccelli. Originario del Sudamerica, il capibara è il più grande roditore vivente del pianeta e incarna la perfezione della rilassatezza!</p>
                 
                 <div class="fact-box">
@@ -277,8 +309,8 @@
             <section>
                 <h2>Origine e Habitat</h2>
                 <div class="gallery">
-                    <img src="https://images.unsplash.com/photo-1589941013453-ec89f33b5e95?auto=format&fit=crop&q=80&w=400" alt="Capibara in habitat naturale" class="gallery-img" onclick="playSound('cheerSound')">
-                    <img src="https://images.unsplash.com/photo-1544015775-faf19dd1a282?auto=format&fit=crop&q=80&w=400" alt="Famiglia di capibara" class="gallery-img" onclick="playSound('successSound')">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Capybara_%281%29.jpg/1200px-Capybara_%281%29.jpg" alt="Capibara in habitat naturale" class="gallery-img" onclick="playSound('cheerSound')">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Capybara_Group.jpg/1200px-Capybara_Group.jpg" alt="Famiglia di capibara" class="gallery-img" onclick="playSound('successSound')">
                 </div>
                 <p>I capibara vivono nelle zone umide del Sudamerica, specialmente in paludi, fiumi e zone costiere. Sono animali estremamente sociali che vivono in gruppi di 10-100 individui. Grazie alla loro straordinaria capacità di adattamento, riescono a convivere pacificamente con altri animali selvatici.</p>
                 
@@ -292,7 +324,7 @@
             <!-- Sezione Caratteristiche Fisiche -->
             <section>
                 <h2>Caratteristiche Fisiche Straordinarie</h2>
-                <img src="https://images.unsplash.com/photo-1576761457991-873dfb3f89df?auto=format&fit=crop&q=80&w=800" alt="Capibara primo piano" class="capy-img" onclick="playSound('clickSound')">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/Capybara_head.jpg/1200px-Capybara_head.jpg" alt="Capibara primo piano" class="capy-img" onclick="playSound('clickSound')">
                 
                 <div class="info-grid">
                     <div class="info-card" onclick="playSound('successSound')">
@@ -323,7 +355,7 @@
             <!-- Sezione Dieta e Alimentazione -->
             <section>
                 <h2>Dieta e Alimentazione</h2>
-                <img src="https://images.unsplash.com/photo-1591381954820-e46a1a403787?auto=format&fit=crop&q=80&w=800" alt="Capibara che mangia" class="capy-img" onclick="playSound('clickSound')">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/Capybara_eating.jpg/1200px-Capybara_eating.jpg" alt="Capibara che mangia" class="capy-img" onclick="playSound('clickSound')">
                 <p>I capibara sono erbivori rigorosi con una dieta composta al 75-85% da 3-4 specie di erbe. La loro alimentazione ricorda quella dei cavalli ma in versione acquatica elegante!</p>
 
                 <div class="fact-box">
@@ -348,8 +380,8 @@
             <section>
                 <h2>Comportamento e Amicizia Interspecifica</h2>
                 <div class="gallery">
-                    <img src="https://images.unsplash.com/photo-1545226393-840c4395bf2d?auto=format&fit=crop&q=80&w=400" alt="Capibara socievole" class="gallery-img" onclick="playSound('cheerSound')">
-                    <img src="https://images.unsplash.com/photo-1573590381326-c5f4d4e4a234?auto=format&fit=crop&q=80&w=400" alt="Gruppo di capibara" class="gallery-img" onclick="playSound('successSound')">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/Capybara_with_bird.jpg/1200px-Capybara_with_bird.jpg" alt="Capibara socievole" class="gallery-img" onclick="playSound('cheerSound')">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Capybara_group_relaxing.jpg/1200px-Capybara_group_relaxing.jpg" alt="Gruppo di capibara" class="gallery-img" onclick="playSound('successSound')">
                 </div>
                 <p>Il capibara è famoso per essere l'animale più socievole del regno animale! Sono noti per fare amicizia con quasi tutte le altre specie: uccelli, rettili, altri roditori e persino cani.</p>
 
@@ -374,7 +406,7 @@
             <!-- Sezione Riproduzione e Ciclo Vitale -->
             <section>
                 <h2>Riproduzione e Ciclo Vitale</h2>
-                <img src="https://images.unsplash.com/photo-1551717743-49959800b1f6?auto=format&fit=crop&q=80&w=800" alt="Giovane capibara" class="capy-img" onclick="playSound('cheerSound')">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Baby_capybara.jpg/1200px-Baby_capybara.jpg" alt="Giovane capibara" class="capy-img" onclick="playSound('cheerSound')">
                 
                 <div class="fact-box">
                     <strong>👶 Nascite e Sviluppo:</strong> Le femmine hanno una gestazione di circa 150 giorni e partoriscono 1-8 cuccioli, generalmente 4. I piccoli nascono già sviluppati e possono seguire la madre subito dopo la nascita!
@@ -397,7 +429,7 @@
             <!-- Sezione Minacce e Conservazione -->
             <section>
                 <h2>Stato di Conservazione</h2>
-                <img src="https://images.unsplash.com/photo-1607066528682-01d500fb0e4d?auto=format&fit=crop&q=80&w=800" alt="Capibara in natura protetta" class="capy-img" onclick="playSound('clickSound')">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Capybara_in_water.jpg/1200px-Capybara_in_water.jpg" alt="Capibara in natura protetta" class="capy-img" onclick="playSound('clickSound')">
                 
                 <p>Il capibara è classificato come "Least Concern" (Minor Preoccupazione) dalla Lista Rossa dell'IUCN, grazie alle sue popolazioni stabili e alla sua straordinaria capacità di adattamento.</p>
 
@@ -480,20 +512,36 @@
             height: 128
         });
 
-        // Funzione per riprodurre suoni
+        // Funzione per generare e riprodurre suoni
         function playSound(soundId) {
-            const audio = document.getElementById(soundId);
-            if (audio) {
-                audio.currentTime = 0;
-                audio.volume = 0.5; // Controllo volume
-                audio.play().catch(err => console.log('Errore riproduzione:', err));
+            try {
+                if (audioContext.state === 'suspended') {
+                    audioContext.resume();
+                }
+                switch(soundId) {
+                    case 'clickSound':
+                        generateBeep(800, 0.1);
+                        break;
+                    case 'successSound':
+                        generateBeep(600, 0.1);
+                        generateBeep(900, 0.15, 'sine');
+                        break;
+                    case 'magicSound':
+                        generateBeep(1200, 0.1);
+                        generateBeep(600, 0.1);
+                        break;
+                    case 'cheerSound':
+                        generateBeep(1000, 0.1);
+                        generateBeep(1200, 0.1);
+                        generateBeep(1400, 0.15);
+                        break;
+                }
+            } catch (err) {
+                console.log('Errore nella riproduzione del suono:', err);
             }
         }
 
-        // Aggiungi effetto sonoro al caricamento della pagina
-        window.addEventListener('load', () => {
-            playSound('cheerSound');
-        });
+        // Non avviare suoni automaticamente: l'utente deve abilitare l'audio premendo il pulsante
     </script>
 </body>
 </html>
